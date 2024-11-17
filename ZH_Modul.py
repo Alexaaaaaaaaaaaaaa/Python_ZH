@@ -61,11 +61,11 @@ def regisztracio():
             jelszo = input("Kérem adjon meg egy jelszót (tartalmazzon kis- és nagybetűt, valamint számot): ")
         return jelszo
 
-    def valami():
+    #def valami():
 
 
-def belepes():
-    def felhasznalo():
-        jelszo = False
-        email = email()
-        with open()
+#def belepes():
+ #   def felhasznalo():
+  #      jelszo = False
+   #     email = email()
+    #    with open()
