@@ -23,20 +23,41 @@ def Bejelentkezes():
     belepablak.title("Bejelentkezés")
 
     email_cim = StringVar()
+    felh_jelszo = StringVar()
     email_label = Label(belepablak, text="Kérem adja meg az e-mail címét: ")
     email_input = Entry(belepablak, textvariable=email_cim)
+    jelszo_label = Label(belepablak, text="Kérem adja meg a jelszavát: ")
+    jelszo_input = Entry(belepablak, textvariable=felh_jelszo)
     email_label.grid(row=0,column=0)
     email_input.grid(row=0,column=1)
+    jelszo_label.grid(row=1, column=0)
+    jelszo_input.grid(row=1, column=1)
     def em():
-        belepes(email_cim)
+        belepes(email_cim,felh_jelszo)
     tovabbgomb=Button(belepablak, text="Tovább", command=em)
-    tovabbgomb.grid(row=1,column=0)
+    tovabbgomb.grid(row=2,column=1)
     belepablak.mainloop()
 
 def Regisztralas():
     regablak = Toplevel(ablak)
     regablak.geometry("320x200")
     regablak.title("Regisztráció")
+    email_cim = StringVar()
+    felh_jelszo = StringVar()
+    email_label = Label(regablak, text="Kérem adja meg az e-mail címét: ")
+    email_input = Entry(regablak, textvariable=email_cim)
+    jelszo_label = Label(regablak, text="Kérem adja meg a jelszavát: ")
+    jelszo_input = Entry(regablak, textvariable=felh_jelszo)
+    email_label.grid(row=0, column=0)
+    email_input.grid(row=0, column=1)
+    jelszo_label.grid(row=1, column=0)
+    jelszo_input.grid(row=1, column=1)
+
+    def reg():
+        belepes(email_cim, felh_jelszo)
+
+    reggomb = Button(regablak, text="Regisztrálok!", command=reg)
+    reggomb.grid(row=2, column=1)
     regablak.mainloop()
 
 gombbelepes = Button(ablak, text="Bejelentkezés", command=Bejelentkezes)

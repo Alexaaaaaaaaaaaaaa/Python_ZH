@@ -13,7 +13,6 @@ def email(_email_cim):
             messagebox.showinfo("Hiba","Kihagyta a @ jelet!")
         else:
             messagebox.showinfo("Hiba","Kihagyta a .-ot!")
-            #emailLabel = Label(text="Kérem adja meg az e-mail címét: ")
     return _email_cim
 
 def jelszo_ellenorzes(jelszo):
@@ -80,17 +79,7 @@ def regisztracio(_jelszo_input):
     return ok
 
 
-def belepes(_email_cim):
-    #belepablak = Tk()
-    #belepablak.title("Belépés")
-    #_email_cim = StringVar()
-    #emailLabel = Label(belepablak, text="Kérem adja meg az e-mail címét: ")
-    #_email_cim2 = Entry(belepablak, textvariable=_email_cim)
-    #emailLabel.grid(row=0,column=0)
-    #_email_cim2.grid(row=0,column=1)
-    #def lepes(lep):
-    #    return lep
-    #tovabb_gomb = Button(belepablak, text="Tovább",command=lepes(True))
+def belepes(_email_cim,_jelszava):
     def felhasznalo():
         jelszo = False
         felh_email = email(_email_cim)
@@ -104,15 +93,16 @@ def belepes(_email_cim):
 
     def jelszoellenorzes(_jelszo):
         ok = False
-        if jelszo_ellenorzes(_jelszo):
+        if _jelszo == _jelszava:
             ok = True
         return ok
 
     jelszo = felhasznalo()
+
     if not jelszo:
         messagebox.showinfo("Hiba","Nem regisztrált felhasználó!")
     else:
         if jelszoellenorzes(jelszo):
-            print("Belépés..")
+            messagebox.showinfo("","Belépés..")
         else:
             messagebox.showinfo("Hiba","Rossz jelszót adott meg!")
