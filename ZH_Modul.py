@@ -5,11 +5,11 @@ from prompt_toolkit.shortcuts import message_dialog
 
 
 def email(_email_cim):
-    while " " in _email_cim or "@" not in _email_cim or "." not in _email_cim:
+    while " " in _email_cim.get() or "@" not in _email_cim.get() or "." not in _email_cim.get():
         messagebox.showinfo("Hiba","Érvénytelen e-mail!")
-        if " " in _email_cim:
+        if " " in _email_cim.get():
             messagebox.showinfo("Hiba","Szóközt használt az e-mail címben!")
-        elif "@" not in _email_cim:
+        elif "@" not in _email_cim.get():
             messagebox.showinfo("Hiba","Kihagyta a @ jelet!")
         else:
             messagebox.showinfo("Hiba","Kihagyta a .-ot!")
@@ -34,26 +34,26 @@ def regisztracio(_felh_email,_jelszo_input):
     def jelszo_bekeres(hosszusag):
         def hossz(_jelszo,min_hossz):
             ok = True
-            if len(_jelszo) < min_hossz:
+            if len(_jelszo.get()) < min_hossz:
                 ok = False
             return ok
         def szamjegyek(_jelszo):
             ok = False
-            for betu in _jelszo:
+            for betu in _jelszo.get():
                 if betu.isnumeric():
                     ok = True
                     break
             return ok
         def kisbetu(_jelszo):
             ok = False
-            for betu in _jelszo:
+            for betu in _jelszo.get():
                 if betu.islower:
                     ok = True
                     break
             return ok
         def nagybetu(_jelszo):
             ok = False
-            for betu in _jelszo:
+            for betu in _jelszo.get():
                 if betu.isupper:
                     ok = True
                     break
@@ -69,7 +69,7 @@ def regisztracio(_felh_email,_jelszo_input):
 
     def felhasznalo_mentes(email, jelszo):
         with open("felhasznalok.txt", "a", encoding="utf-8") as fajl:
-            fajl.write(email + ";" + jelszo + "\n")
+            fajl.write(email.get() + ";" + jelszo.get() + "\n")
 
     felhasznalo_email = email(_felh_email)
     felhasznalo_jelszava = jelszo_bekeres(5)
@@ -86,7 +86,7 @@ def belepes(_email_cim,_jelszava):
         with open("felhasznalok.txt","r",encoding="utf-8") as fajl:
             for sor in fajl:
                 felhasznaloi_adatok = sor.strip().split(";")
-                if felhasznaloi_adatok[0] == email:
+                if felhasznaloi_adatok[0] == felh_email:
                     jelszo = felhasznaloi_adatok[1]
                 break
         return jelszo
