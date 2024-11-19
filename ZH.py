@@ -22,8 +22,8 @@ def Bejelentkezes():
     belepablak.geometry("320x200")
     belepablak.title("Bejelentkezés")
 
-    email_cim = StringVar()
-    felh_jelszo = StringVar()
+    email_cim = str
+    felh_jelszo = str
     email_label = Label(belepablak, text="Kérem adja meg az e-mail címét: ")
     email_input = Entry(belepablak, textvariable=email_cim)
     jelszo_label = Label(belepablak, text="Kérem adja meg a jelszavát: ")
@@ -42,8 +42,8 @@ def Regisztralas():
     regablak = Toplevel(ablak)
     regablak.geometry("320x200")
     regablak.title("Regisztráció")
-    email_cim = StringVar()
-    reg_jelszo = StringVar()
+    email_cim = str
+    reg_jelszo = str
     email_label = Label(regablak, text="Kérem adja meg az e-mail címét: ")
     email_input = Entry(regablak, textvariable=email_cim)
     jelszo_label = Label(regablak, text="Kérem adja meg a jelszavát: ")

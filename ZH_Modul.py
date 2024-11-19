@@ -5,11 +5,11 @@ from prompt_toolkit.shortcuts import message_dialog
 
 
 def email(_email_cim):
-    while " " in _email_cim.get() or "@" not in _email_cim.get() or "." not in _email_cim.get():
+    while " " in _email_cim or "@" not in _email_cim or "." not in _email_cim:
         messagebox.showinfo("Hiba","Érvénytelen e-mail!")
-        if " " in _email_cim.get():
+        if " " in _email_cim:
             messagebox.showinfo("Hiba","Szóközt használt az e-mail címben!")
-        elif "@" not in _email_cim.get():
+        elif "@" not in _email_cim:
             messagebox.showinfo("Hiba","Kihagyta a @ jelet!")
         else:
             messagebox.showinfo("Hiba","Kihagyta a .-ot!")
@@ -34,26 +34,26 @@ def regisztracio(_felh_email,_jelszo_input):
     def jelszo_bekeres(hosszusag):
         def hossz(_jelszo,min_hossz):
             ok = True
-            if len(_jelszo.get()) < min_hossz:
+            if len(_jelszo) < min_hossz:
                 ok = False
             return ok
         def szamjegyek(_jelszo):
             ok = False
-            for betu in _jelszo.get():
+            for betu in _jelszo:
                 if betu.isnumeric():
                     ok = True
                     break
             return ok
         def kisbetu(_jelszo):
             ok = False
-            for betu in _jelszo.get():
+            for betu in _jelszo:
                 if betu.islower:
                     ok = True
                     break
             return ok
         def nagybetu(_jelszo):
             ok = False
-            for betu in _jelszo.get():
+            for betu in _jelszo:
                 if betu.isupper:
                     ok = True
                     break
@@ -73,7 +73,7 @@ def regisztracio(_felh_email,_jelszo_input):
 
     felhasznalo_email = email(_felh_email)
     felhasznalo_jelszava = jelszo_bekeres(5)
-    #ok = jelszo_ellenorzes(felhasznalo_jelszava)
+    ok = True
     #if ok:
     felhasznalo_mentes(felhasznalo_email,felhasznalo_jelszava)
     return ok
