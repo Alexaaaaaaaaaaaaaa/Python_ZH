@@ -15,45 +15,45 @@ def email(_email_cim):
             messagebox.showinfo("Hiba","Kihagyta a .-ot!")
     return _email_cim
 
-def jelszo_ellenorzes(jelszo):
-    ok = False
-    proba = 0
-    while True:
-        jelszo2 = input("Kérem ismét a jelszavát: ")
-        if (jelszo == jelszo2):
-            ok = True
-            break
-        else:
-            proba +=1
-            print("Rossz jelszót adott meg!")
-            if (proba == 3):
-                break
-    return ok
+#def jelszo_ellenorzes(jelszo):
+ #   ok = False
+  #  proba = 0
+   # while True:
+    #    jelszo2 = input("Kérem ismét a jelszavát: ")
+     #   if (jelszo == jelszo2):
+      #      ok = True
+       #     break
+        #else:
+         #   proba +=1
+          #  print("Rossz jelszót adott meg!")
+           # if (proba == 3):
+            #    break
+    #return ok
 
-def regisztracio(_jelszo_input):
+def regisztracio(_felh_email,_jelszo_input):
     def jelszo_bekeres(hosszusag):
         def hossz(_jelszo,min_hossz):
             ok = True
-            if len(_jelszo) < min_hossz:
+            if len(_jelszo.get()) < min_hossz:
                 ok = False
             return ok
         def szamjegyek(_jelszo):
             ok = False
-            for betu in _jelszo:
+            for betu in _jelszo.get():
                 if betu.isnumeric():
                     ok = True
                     break
             return ok
         def kisbetu(_jelszo):
             ok = False
-            for betu in _jelszo:
+            for betu in _jelszo.get():
                 if betu.islower:
                     ok = True
                     break
             return ok
         def nagybetu(_jelszo):
             ok = False
-            for betu in _jelszo:
+            for betu in _jelszo.get():
                 if betu.isupper:
                     ok = True
                     break
@@ -71,11 +71,11 @@ def regisztracio(_jelszo_input):
         with open("felhasznalok.txt", "a", encoding="utf-8") as fajl:
             fajl.write(email + ";" + jelszo + "\n")
 
-    felhasznalo_email = email()
-    felhasznalo_jelszava = jelszo_bekeres()
-    ok = jelszo_ellenorzes(felhasznalo_jelszava)
-    if ok:
-        felhasznalo_mentes(felhasznalo_email,felhasznalo_jelszava)
+    felhasznalo_email = email(_felh_email)
+    felhasznalo_jelszava = jelszo_bekeres(5)
+    #ok = jelszo_ellenorzes(felhasznalo_jelszava)
+    #if ok:
+    felhasznalo_mentes(felhasznalo_email,felhasznalo_jelszava)
     return ok
 
 

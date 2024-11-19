@@ -43,18 +43,18 @@ def Regisztralas():
     regablak.geometry("320x200")
     regablak.title("Regisztráció")
     email_cim = StringVar()
-    felh_jelszo = StringVar()
+    reg_jelszo = StringVar()
     email_label = Label(regablak, text="Kérem adja meg az e-mail címét: ")
     email_input = Entry(regablak, textvariable=email_cim)
     jelszo_label = Label(regablak, text="Kérem adja meg a jelszavát: ")
-    jelszo_input = Entry(regablak, textvariable=felh_jelszo)
+    jelszo_input = Entry(regablak, textvariable=reg_jelszo)
     email_label.grid(row=0, column=0)
     email_input.grid(row=0, column=1)
     jelszo_label.grid(row=1, column=0)
     jelszo_input.grid(row=1, column=1)
 
     def reg():
-        belepes(email_cim, felh_jelszo)
+        regisztracio(email_cim,reg_jelszo)
 
     reggomb = Button(regablak, text="Regisztrálok!", command=reg)
     reggomb.grid(row=2, column=1)
