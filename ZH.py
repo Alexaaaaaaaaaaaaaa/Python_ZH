@@ -4,6 +4,7 @@ from ZH_Modul import *
 from BA_Modul import *
 
 ablak = Tk()
+ablak.title("Napló App")
 ablak.geometry("320x200")
 szoveg0 = Label(ablak,text="")
 szoveg = Label(ablak, text="Ha már van fiókja, kérem jelentkezzen be:")

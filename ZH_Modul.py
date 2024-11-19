@@ -61,11 +61,41 @@ def regisztracio():
             jelszo = input("Kérem adjon meg egy jelszót (tartalmazzon kis- és nagybetűt, valamint számot): ")
         return jelszo
 
-    #def valami():
+    def felhasznalo_mentes(email, jelszo):
+        with open("felhasznalok.txt", "a", encoding="utf-8") as fajl:
+            fajl.write(email + ";" + jelszo + "\n")
+
+    felhasznalo_email = email()
+    felhasznalo_jelszava = jelszo_bekeres()
+    ok = jelszo_ellenorzes(felhasznalo_jelszava)
+    if ok:
+        felhasznalo_mentes(felhasznalo_email,felhasznalo_jelszava)
+    return ok
 
 
-#def belepes():
- #   def felhasznalo():
-  #      jelszo = False
-   #     email = email()
-    #    with open()
+def belepes():
+    def felhasznalo():
+        jelszo = False
+        felh_email = email()
+        with open("felhasznalok.txt","r",encoding="utf-8") as fajl:
+            for sor in fajl:
+                felhasznaloi_adatok = sor.strip().split(";")
+                if felhasznaloi_adatok[0] == email:
+                    jelszo = felhasznaloi_adatok[1]
+                    break
+        return jelszo
+
+    def jelszoellenorzes(_jelszo):
+        ok = False
+        if jelszo_ellenorzes(_jelszo):
+            ok = True
+        return ok
+
+    jelszo = felhasznalo()
+    if not jelszo:
+        print("Nem regisztrált felhasználó!")
+    else:
+        if jelszoellenorzes(jelszo):
+            print("Belépés..")
+        else:
+            print("Rossz jelszót adott meg!")
