@@ -53,10 +53,10 @@ def Regisztralas():
     jelszo_label.grid(row=1, column=0)
     jelszo_input.grid(row=1, column=1)
 
-    def reg():
+    def Reg():
         regisztracio(email_cim,reg_jelszo)
 
-    reggomb = Button(regablak, text="Regisztrálok!", command=reg)
+    reggomb = Button(regablak, text="Regisztrálok!", command=Reg)
     reggomb.grid(row=2, column=1)
     regablak.mainloop()
 
