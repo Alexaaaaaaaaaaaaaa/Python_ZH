@@ -1,14 +1,19 @@
-def email():
-    _email_cim = input("Kérem adja meg az e-mail címét: ")
-    while " " in _email_cim or "@" not in _email_cim or "." not in _email_cim:
-        print("Érvénytelen e-mail!")
-        if " " in _email_cim:
-            print("Szóközt használt az e-mail címben!")
-        elif "@" not in _email_cim:
-            print("Kihagyta a @ jelet!")
+from tkinter import *
+from tkinter import messagebox
+
+from prompt_toolkit.shortcuts import message_dialog
+
+
+def email(_email_cim):
+    while " " in _email_cim.get() or "@" not in _email_cim.get() or "." not in _email_cim.get():
+        messagebox.showinfo("Hiba","Érvénytelen e-mail!")
+        if " " in _email_cim.get():
+            messagebox.showinfo("Hiba","Szóközt használt az e-mail címben!")
+        elif "@" not in _email_cim.get():
+            messagebox.showinfo("Hiba","Kihagyta a @ jelet!")
         else:
-            print("Kihagyta a .-ot!")
-        _email_cim = input("Kérem adja meg az e-mail címét: ")
+            messagebox.showinfo("Hiba","Kihagyta a .-ot!")
+            #emailLabel = Label(text="Kérem adja meg az e-mail címét: ")
     return _email_cim
 
 def jelszo_ellenorzes(jelszo):
@@ -26,7 +31,7 @@ def jelszo_ellenorzes(jelszo):
                 break
     return ok
 
-def regisztracio():
+def regisztracio(_jelszo_input):
     def jelszo_bekeres(hosszusag):
         def hossz(_jelszo,min_hossz):
             ok = True
@@ -55,10 +60,12 @@ def regisztracio():
                     break
             return ok
 
-        jelszo = input("Kérem adjon meg egy jelszót: ")
+        #jelszo = input("Kérem adjon meg egy jelszót: ")
+        jelszo = _jelszo_input
         while not hossz(jelszo, hosszusag) or not szamjegyek(jelszo) or not kisbetu(jelszo) or not nagybetu(jelszo):
-            print("A jelszó nem megfelelő!")
-            jelszo = input("Kérem adjon meg egy jelszót (tartalmazzon kis- és nagybetűt, valamint számot): ")
+            messagebox.showinfo("Hiba","A jelszó nem megfelelő!")
+            jelszo = _jelszo_input
+            #jelszo = input("Kérem adjon meg egy jelszót (tartalmazzon kis- és nagybetűt, valamint számot): ")
         return jelszo
 
     def felhasznalo_mentes(email, jelszo):
@@ -73,16 +80,26 @@ def regisztracio():
     return ok
 
 
-def belepes():
+def belepes(_email_cim):
+    #belepablak = Tk()
+    #belepablak.title("Belépés")
+    #_email_cim = StringVar()
+    #emailLabel = Label(belepablak, text="Kérem adja meg az e-mail címét: ")
+    #_email_cim2 = Entry(belepablak, textvariable=_email_cim)
+    #emailLabel.grid(row=0,column=0)
+    #_email_cim2.grid(row=0,column=1)
+    #def lepes(lep):
+    #    return lep
+    #tovabb_gomb = Button(belepablak, text="Tovább",command=lepes(True))
     def felhasznalo():
         jelszo = False
-        felh_email = email()
+        felh_email = email(_email_cim)
         with open("felhasznalok.txt","r",encoding="utf-8") as fajl:
             for sor in fajl:
                 felhasznaloi_adatok = sor.strip().split(";")
                 if felhasznaloi_adatok[0] == email:
                     jelszo = felhasznaloi_adatok[1]
-                    break
+                break
         return jelszo
 
     def jelszoellenorzes(_jelszo):
@@ -93,9 +110,9 @@ def belepes():
 
     jelszo = felhasznalo()
     if not jelszo:
-        print("Nem regisztrált felhasználó!")
+        messagebox.showinfo("Hiba","Nem regisztrált felhasználó!")
     else:
         if jelszoellenorzes(jelszo):
             print("Belépés..")
         else:
-            print("Rossz jelszót adott meg!")
+            messagebox.showinfo("Hiba","Rossz jelszót adott meg!")
