@@ -81,7 +81,7 @@ def regisztracio(_felh_email,_jelszo_input):
 
 def belepes(_email_cim,_jelszava):
     def felhasznalo():
-        jelszo = False
+        jelszo = None
         felh_email = email(_email_cim)
         with open("felhasznalok.txt","r",encoding="utf-8") as fajl:
             for sor in fajl:
