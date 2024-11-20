@@ -68,13 +68,17 @@ def Naplo():
     naploablak = Toplevel(ablak)
     naploablak.geometry("320x200")
     naploablak.title("Napló")
-    t = Text(naploablak, height=150)
-    t.pack()
+
     naplo_jegyzet = StringVar()
     naplo_jegyzet.set("")
-    naplobev = Entry(naploablak, textvariable=naplo_jegyzet)
+    naplobev = Entry(naploablak, textvariable=naplo_jegyzet, width=52)
+    #naplobev.place(width=52,height=150)
+    #t = Text(naplobev, height=150)
+    #t.pack()
+    mentesgomb = Button(naploablak, text="Mentés", command=BA_fuggveny(naplo_jegyzet))
 
-    naplobev.pack()
+    naplobev.grid(row=0,column=0)
+    mentesgomb.grid(row=1,column=0)
 
     naploablak.mainloop()
 
