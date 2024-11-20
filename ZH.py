@@ -68,6 +68,13 @@ def Naplo():
     naploablak = Toplevel(ablak)
     naploablak.geometry("320x200")
     naploablak.title("Napló")
+    t = Text(naploablak, height=150)
+    t.pack()
+    naplo_jegyzet = StringVar()
+    naplo_jegyzet.set("")
+    naplobev = Entry(naploablak, textvariable=naplo_jegyzet)
+
+    naplobev.pack()
 
     naploablak.mainloop()
 
