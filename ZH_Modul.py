@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 
-from prompt_toolkit.shortcuts import message_dialog
-
 
 def email(_email_cim):
     while " " in _email_cim.get() or "@" not in _email_cim.get() or "." not in _email_cim.get():
@@ -81,7 +79,7 @@ def regisztracio(_felh_email,_jelszo_input):
 
 def belepes(_email_cim,_jelszava):
     def felhasznalo():
-        jelszo = None
+        jelszo = ""
         felh_email = email(_email_cim)
         with open("felhasznalok.txt","r",encoding="utf-8") as fajl:
             for sor in fajl:
