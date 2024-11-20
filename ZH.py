@@ -10,12 +10,16 @@ ablak.geometry("320x200")
 szoveg0 = Label(ablak,text="")
 szoveg = Label(ablak, text="Ha már van fiókja, kérem jelentkezzen be:")
 szoveg2 = Label(ablak,text="Ha még nincs fiókja, kérem regisztráljon:")
+szoveg4 = Label(ablak,text="Napló megnyitása:")
 szoveg3 = Label(ablak,text="")
+szoveg5 = Label(ablak,text="")
 
 szoveg0.grid(row=0,column=0,sticky=W,pady=2)
 szoveg.grid(row=1,column=0,sticky=W,pady=2)
 szoveg2.grid(row=3,column=0, sticky=W,pady=2)
 szoveg3.grid(row=2,column=0,sticky=W,pady=2)
+szoveg4.grid(row=5,column=0,sticky=W,pady=2)
+szoveg5.grid(row=4,column=0,sticky=W,pady=2)
 
 def Bejelentkezes():
     belepablak = Toplevel(ablak)
@@ -60,10 +64,19 @@ def Regisztralas():
     reggomb.grid(row=2, column=1)
     regablak.mainloop()
 
+def Naplo():
+    naploablak = Toplevel(ablak)
+    naploablak.geometry("320x200")
+    naploablak.title("Napló")
+
+    naploablak.mainloop()
+
 gombbelepes = Button(ablak, text="Bejelentkezés", command=Bejelentkezes)
 gombregisztracio = Button(ablak,text="Regisztráció", command=Regisztralas)
+gombnaplo = Button(ablak, text="Megnyitás", command=Naplo)
 
 gombbelepes.grid(row=1,column=1,sticky=E,pady=2)
 gombregisztracio.grid(row=3,column=1,sticky=E,pady=2)
+gombnaplo.grid(row=5,column=1,sticky=E,pady=2)
 
 ablak.mainloop()
