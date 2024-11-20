@@ -6,6 +6,7 @@ Modulok:
   - ZH_Modul.py
   - Ba_Modul.py
   - tkinter
+
 Függvények:
   - Bejelentkezes()
   - Regisztralas()
