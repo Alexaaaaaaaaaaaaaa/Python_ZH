@@ -10,6 +10,7 @@ Modulok:
 Függvények:
   - Bejelentkezes()
   - Regisztralas()
+  - Napl()
   - em()
   - Reg()
   - Naplo()
